@@ -1,0 +1,26 @@
+timezone: UTC
+
++main1:
+  for_each>:
+   #時間をこの時に固定するための技
+   time : ["${ moment().unix() }"]
+  _do:
+    echo>: ${time}
+
++main2:
+  loop>: 30
+  _do:
+    +fizzbuzz:
+      if>: ${(i+1)%3==0 && (i+1)%5==0}
+      _do:
+        echo>: ${i+1} fizzbuzz
+      _else_do:
+        if>: ${(i+1)%3==0}
+        _do:
+          echo>: ${i+1} fizz
+        _else_do:
+          if>: ${(i+1)%5==0}
+          _do:
+            echo>: ${i+1} buzz
+          _else_do:
+            echo>: ${i+1}
