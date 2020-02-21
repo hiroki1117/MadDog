@@ -1,0 +1,10 @@
+timezone: UTC
+
+_export:
+  name: hiroki
+
++main:
+  echo>: ${name}
+
++ora:
+  call>: sub.dig
